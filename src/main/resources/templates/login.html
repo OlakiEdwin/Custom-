@@ -10,13 +10,12 @@
 </head>
 <body>
 <div class="container-fluid text-center">
-    <div>
-<!--        <img class="img-fluid" th:src="/@{/images/ShopmeAdminBig.png}" />-->
-    </div>
     <form th:action="@{/login}" method="post" style="max-width: 350px; margin: 0 auto;">
 
         <div th:if="${param.error}">
-            <p class="text-danger">Login Failed!</p>
+            <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
+                <p th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"><p>
+            </p>
         </div>
 
         <div th:if="${param.logout}">
@@ -24,7 +23,7 @@
         </div>
 
         <div class="border border-secondary p-3 rounded">
-            <p>Access to Shopme Control Panel</p>
+            <p>Access to Olaki Control Panel</p>
             <p>
                 <input type="text" name="username" class="form-control" placeholder="username" required autofocus/>
             </p>
